@@ -1,0 +1,2 @@
+class HighsController < ApplicationController
+end

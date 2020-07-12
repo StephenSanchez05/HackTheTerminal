@@ -1,10 +1,14 @@
 class DifficultiesController < ApplicationController
 
     def index
-        difficulty = Difficulty.All
+        difficulty = Difficulty.all
         options = {}
         options[:include] = [:name, :words]
-        render json: DifficultySerializer.new(difficulty, options).serializable_hash
+        render json: difficulty
+    end
+    
+    def create
+
     end
 
     def show
@@ -13,5 +17,4 @@ class DifficultiesController < ApplicationController
         options[:include] = [:name, :words]
         render json: DifficultySerializer.new(difficulty, options).serializable_hash
     end
-        
 end

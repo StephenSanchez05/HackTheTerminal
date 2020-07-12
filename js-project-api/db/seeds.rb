@@ -5,4 +5,5 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-hard = Difficulty.create(name: 'HARD', words: ["basis", "truth", "night", "topic", "owner", "power", "phone", "honey", "death", "heart", "cheek", "ratio", "media", "depth", "chest", "guest", "salad", "blood", "story", "union"])
+Difficulty.delete_all
+hard = Difficulty.create({:name => 'HARD', :words => ["BASIS", "TRUTH", "NIGHT", "TOPIC", "OWNER", "POWER", "PHONE", "HONEY", "DEATH", "HEART", "CHEEK", "RATIO", "MEDIA", "DEPTH", "CHEST", "GUEST", "SALAD", "BLOOD", "STORY", "UNION"]})

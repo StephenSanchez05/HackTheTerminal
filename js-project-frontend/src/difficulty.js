@@ -3,6 +3,8 @@ document.addEventListener("DOMContentLoaded", function() {
 
 })
 
+const hackWords = ["!", "@", "#", "$", "%", "^", "&", "*", "}", "{"];
+
 class Difficulty {
     constructor(data) {
         this.id = data.id;
@@ -16,25 +18,49 @@ class Difficulty {
         .then(resp => resp.json())
         .then(results => {
             results.forEach( info => {
+                if (info.name === "HARD") {
                 let newDifficulty = new Difficulty(info);
-                console.log(newDifficulty)
-                newDifficulty.addDifficultyToDom();
+                let x = newDifficulty.words;
+                createWordLibrary(x);
+                }
             } ) 
         })
     }
+}
 
-    addDifficultyToDom() {
+    function addDifficultyToDom(x) {
         let data = document.getElementById("dump");
-        let p = document.createElement("p");
-        p.innerText = this.words;
+        let p = document.createElement("h3");
+        p.innerText = x;
         data.appendChild(p);
     }
 
-    static addRandom() {
-        console.log("we hit the function")
-        let x = document.querySelector('div');
-        let p = document.createElement("p");
-        p.innerHTML = "hello-world";
-        x.appendChild(p);
+    function createWordLibrary(data) {
+        data = data.replace(/["[\],]+/g, "");
+        let diff = data.split(' ');
+        let arr = [];
+        for(var i = 0; i < 11; i++) {
+            let randNumber = Math.floor(Math.random() * 10);
+            let y = diff.splice(randNumber, 1);
+            arr.push(y);
+        }
+        arr.forEach(x => {
+            addHackWords();
+            addDifficultyToDom(x);
+            // addHackWords();
+        })
     }
+
+    function addHackWords() {
+    let randHighNumber = Math.floor(Math.random() * 20) + 5;
+    let arr = [];
+    for(var i = 0; i < randHighNumber; i++) {
+        let randNumber = Math.floor(Math.random() * 10);
+        arr.push(hackWords[randNumber]);
+    }
+    arr = arr.join();
+    arr = arr.replace(/[,]+/g, "")
+    console.log(arr)
+        addDifficultyToDom(arr);
+
 }

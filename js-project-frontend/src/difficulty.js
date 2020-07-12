@@ -5,6 +5,9 @@ document.addEventListener("DOMContentLoaded", function() {
 
 const hackWords = ["!", "@", "#", "$", "%", "^", "&", "*", "}", "{"];
 
+let answer;
+let randNumber;
+
 class Difficulty {
     constructor(data) {
         this.id = data.id;
@@ -35,7 +38,7 @@ class Difficulty {
 
     function addWordsToDom(x) {
         let data = document.getElementById("dump");
-        data.insertAdjacentHTML('beforeend', '<span style="color: white;">' + x + "</span>");
+        data.insertAdjacentHTML('beforeend', '<span style="color: white"; id="words";>' + x + "</span>");
     }
 
     function createWordLibrary(data) {
@@ -43,15 +46,17 @@ class Difficulty {
         let diff = data.split(' ');
         let arr = [];
         for(var i = 0; i < 15; i++) {
-            let randNumber = Math.floor(Math.random() * 10);
+            randNumber = Math.floor(Math.random() * 10);
             let y = diff.splice(randNumber, 1);
             arr.push(y);
         }
+        answer = arr[randNumber];
         arr.forEach(x => {
             addHackWords();
             addWordsToDom(x);
             addHackWords();
         })
+        console.log(answer);
     }
 
     function addHackWords() {
@@ -63,7 +68,6 @@ class Difficulty {
     }
     arr = arr.join();
     arr = arr.replace(/[,]+/g, "")
-    console.log(arr)
-        addDifficultyToDom(arr);
+    addDifficultyToDom(arr);
 
 }

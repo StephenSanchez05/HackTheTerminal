@@ -30,24 +30,27 @@ class Difficulty {
 
     function addDifficultyToDom(x) {
         let data = document.getElementById("dump");
-        let p = document.createElement("h3");
-        p.innerText = x;
-        data.appendChild(p);
+        data.insertAdjacentHTML('beforeend', x);
+    }
+
+    function addWordsToDom(x) {
+        let data = document.getElementById("dump");
+        data.insertAdjacentHTML('beforeend', '<span style="color: white;">' + x + "</span>");
     }
 
     function createWordLibrary(data) {
         data = data.replace(/["[\],]+/g, "");
         let diff = data.split(' ');
         let arr = [];
-        for(var i = 0; i < 11; i++) {
+        for(var i = 0; i < 15; i++) {
             let randNumber = Math.floor(Math.random() * 10);
             let y = diff.splice(randNumber, 1);
             arr.push(y);
         }
         arr.forEach(x => {
             addHackWords();
-            addDifficultyToDom(x);
-            // addHackWords();
+            addWordsToDom(x);
+            addHackWords();
         })
     }
 

@@ -7,7 +7,7 @@ const hackWords = ["!", "@", "#", "$", "%", "^", "&", "*", "}", "{"];
 
 let answer;
 let randNumber;
-
+let correctLetters = 0;
 
 
 
@@ -43,13 +43,7 @@ class Difficulty {
     function addWordsToDom(x) {
         let data = document.getElementById("dump");
         data.insertAdjacentHTML('beforeend', '<span style="color: white"; class="words";>' + x + "</span>");
-        let selector = document.querySelectorAll('span.words');
-        selector.forEach(item => {
-            item.addEventListener("mouseup", event => {
-                event = event.target.innerHTML;
-                winOrLose(event);
-            })
-        })
+        setQuerySelector();
     }
 
     function createWordLibrary(data) {
@@ -61,8 +55,7 @@ class Difficulty {
             let y = diff.splice(randNumber, 1);
             arr.push(y);
         }
-        answer = arr[randNumber];
-        answer = String(answer);
+        answer = String(arr[randNumber]);
         arr.forEach(x => {
             addHackWords();
             addWordsToDom(x);
@@ -83,11 +76,50 @@ class Difficulty {
     addDifficultyToDom(arr);
 }
 
+function setQuerySelector() {
+    let selector = document.querySelectorAll('span.words');
+    selector.forEach(item => {
+        item.addEventListener("click", wordClicked, false);
+    })
+}
+
+function wordClicked(event) {
+    event.target.style.color = "red";
+    event = event.target.innerHTML;
+    winOrLose(event);
+    
+}
+
+function wrongAnswer(x) {
+    correctLetters = 0;
+    let wrongAnswer = x.split('');
+    let rightAnswer = answer.split('');
+    for(var i = 0; i < wrongAnswer.length; i++) {
+        if ( wrongAnswer[i] === rightAnswer[i]) {
+            correctLetters += 1;
+        }
+    }
+    document.querySelectorAll('.correctLetters').forEach(function(a){
+        a.remove()
+        })
+    let docNumbers = document.getElementById("dump");
+    docNumbers.insertAdjacentHTML('beforeend', '<h2 style="color: white"; class="correctLetters";>' + correctLetters + "/5 Letters are in the correct space" + "</h2>");
+
+}
+
+function rightAnswer() {
+    document.querySelectorAll('.correctLetters').forEach(function(a){
+        a.remove()
+        })
+        let docNumbers = document.getElementById("dump");
+        docNumbers.insertAdjacentHTML('beforeend', '<h1 style="color: white" class="correctLetters";>' + "You win!" + "</h1>");
+}
+
 function winOrLose(x) {
     if (x === answer) {
-        console.log("You win!");
+        rightAnswer();
     } else {
-        console.log(x);
+        wrongAnswer(x);
     }
 
 }

@@ -1,8 +1,8 @@
 body {
     background-color:  rgb(80, 99, 85);
     text-align: center;
-    margin-right: 250px;
-    margin-left: 250px;
+    margin-right: 350px;
+    margin-left: 350px;
 }
 h2 {
     color: white;
@@ -11,9 +11,21 @@ h2 {
 #screen {
     
     
+    
+}
+
+@keyframes scale {
+    from {
+        opacity: 0;
+       
+    }
+    to {
+        opacity: 1;
+    }
 }
 .words {
     cursor: pointer;
+    animation: scale 1s ease-in;
 
 }
 

@@ -1,13 +1,11 @@
-document.addEventListener("DOMContentLoaded", function() {
-    Difficulty.loadDifficulty()
 
-})
 
 const hackWords = ["!", "@", "#", "$", "%", "^", "&", "*", "}", "{"];
 
 let answer;
 let randNumber;
 let correctLetters = 0;
+
 
 
 
@@ -25,7 +23,8 @@ class Difficulty {
         .then(resp => resp.json())
         .then(results => {
             results.forEach( info => {
-                if (info.name === "HARD") {
+            
+                if (info.name === selectedDifficulty.toUpperCase()) {
                 let newDifficulty = new Difficulty(info);
                 let x = newDifficulty.words;
                 createWordLibrary(x);
@@ -103,7 +102,7 @@ function wrongAnswer(x) {
         a.remove()
         })
     let docNumbers = document.getElementById("dump");
-    docNumbers.insertAdjacentHTML('beforeend', '<h2 style="color: white"; class="correctLetters";>' + correctLetters + "/5 Letters are in the correct space" + "</h2>");
+    docNumbers.insertAdjacentHTML('beforeend', '<h2 style="color: white"; class="correctLetters";>' + correctLetters + "/" + rightAnswer.length + " Letters are in the correct space" + "</h2>");
 
 }
 

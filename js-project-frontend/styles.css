@@ -1,11 +1,17 @@
 body {
     background-color:  rgb(80, 99, 85);
     text-align: center;
+    margin-right: 350px;
+    margin-left: 350px;
 }
 h2 {
     color: white;
 }
 
+#screen {
+    
+    
+}
 .words {
     cursor: pointer;
 

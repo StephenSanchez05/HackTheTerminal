@@ -36,12 +36,12 @@ class Difficulty {
 
     function addDifficultyToDom(x) {
         let data = document.getElementById("dump");
-        data.insertAdjacentHTML('beforeend', x);
+        data.insertAdjacentHTML('beforeend', '<span id="screen";>' + x + "</span>");
     }
 
     function addWordsToDom(x) {
         let data = document.getElementById("dump");
-        data.insertAdjacentHTML('beforeend', '<span style="color: white"; class="words";>' + x + "</span>");
+        data.insertAdjacentHTML('beforeend', '<span style="color: white"; id="screen"; class="words";>' + x + "</span>");
         setQuerySelector();
     }
 

@@ -90,6 +90,7 @@ function wordClicked(event) {
 
 function wrongAnswer(x) {
     correctLetters = 0;
+    scoreAttempts++;
     let wrongAnswer = x.split('');
     let rightAnswer = answer.split('');
     for(var i = 0; i < wrongAnswer.length; i++) {
@@ -106,12 +107,13 @@ function wrongAnswer(x) {
 }
 
 function rightAnswer() {
+    finalScore();
     document.querySelectorAll('.correctLetters').forEach(function(a){
         a.remove()
         })
         let docNumbers = document.getElementById("dump");
         docNumbers.insertAdjacentHTML('beforeend', '<h1 style="color: white" class="correctLetters";>' + "You win!" + "</h1>");
-        finalScore();
+        docNumbers.insertAdjacentHTML('beforeend', '<h1 style="color: white" class="correctLetters";>' + "Your Score: " +  scoreFinalScore + "</h1>");
 }
 
 function winOrLose(x) {

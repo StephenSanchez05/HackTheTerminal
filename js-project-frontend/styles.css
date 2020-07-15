@@ -8,9 +8,8 @@ h2 {
     color: white;
 }
 
-#screen {   
-    
-    
+.new-highscore-form {
+    opacity: 1
 }
 
 @keyframes scale {

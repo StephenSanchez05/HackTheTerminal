@@ -28,7 +28,7 @@ function diffClicked(event) {
             a.remove()
             })
         Difficulty.loadDifficulty();
-        console.log(event);
+        startScoring();
         
 }
 

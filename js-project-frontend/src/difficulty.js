@@ -34,18 +34,18 @@ class Difficulty {
     }
 }
 
-    function addDifficultyToDom(x) {
+function addDifficultyToDom(x) {
         let data = document.getElementById("dump");
         data.insertAdjacentHTML('beforeend', '<span id="screen";>' + x + "</span>");
-    }
+}
 
-    function addWordsToDom(x) {
+function addWordsToDom(x) {
         let data = document.getElementById("dump");
         data.insertAdjacentHTML('beforeend', '<span style="color: white"; id="screen"; class="words";>' + x + "</span>");
         setQuerySelector();
-    }
+}
 
-    function createWordLibrary(data) {
+function createWordLibrary(data) {
         data = data.replace(/["[\],]+/g, "");
         let diff = data.split(' ');
         let arr = [];
@@ -61,9 +61,9 @@ class Difficulty {
             addHackWords();
         })
         console.log(answer);
-    }
+}
 
-    function addHackWords() {
+function addHackWords() {
     let randHighNumber = Math.floor(Math.random() * 20) + 5;
     let arr = [];
     for(var i = 0; i < randHighNumber; i++) {
@@ -86,7 +86,6 @@ function wordClicked(event) {
     event.target.style.color = "red";
     event = event.target.innerHTML;
     winOrLose(event);
-    
 }
 
 function wrongAnswer(x) {
@@ -112,6 +111,7 @@ function rightAnswer() {
         })
         let docNumbers = document.getElementById("dump");
         docNumbers.insertAdjacentHTML('beforeend', '<h1 style="color: white" class="correctLetters";>' + "You win!" + "</h1>");
+        finalScore();
 }
 
 function winOrLose(x) {

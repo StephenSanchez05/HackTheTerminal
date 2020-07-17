@@ -1,4 +1,4 @@
 class DifficultySerializer
   include FastJsonapi::ObjectSerializer
-  attributes :name, :words, :highs
+  attributes :name, :words
 end

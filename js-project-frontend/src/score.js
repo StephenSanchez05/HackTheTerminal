@@ -1,6 +1,4 @@
-document.addEventListener("DOMContentLoaded", function() {
-    HiScore.createHiScore()
-})
+
 
 let scoreStartTime;
 let scoreEndTime;
@@ -17,6 +15,7 @@ class HiScore {
 
     static createHiScore() {
         let scoreForm = document.querySelector(".new-highscore-form")
+        console.log(scoreForm);
         scoreForm.addEventListener("submit", function(event) {
             event.preventDefault();
             console.log("clicked");
@@ -33,19 +32,14 @@ class HiScore {
         .then(response => response.json())
         .then(resp => {
             let newScore = new HiScore(resp)
-            newScore.listHighScores
+            
             console.log(resp);
         })
     })
     }
-
-     static listHighScores() {
-     let scores = document.querySelector(".scoreList")
-     let p = document.createElement("p")
-     p.innertext = this.difficulty
-     scores.appendChild(p)
-    }
 }
+
+
 
 
 
@@ -59,6 +53,24 @@ function finalScore() {
     scoreEndTime = new Date().getTime();
     scoreTimeDifference = scoreEndTime - scoreStartTime;
     scoreFinalScore = scoreFinalScore - scoreTimeDifference - (scoreAttempts * 50);
-    console.log(scoreTimeDifference);
-    console.log(scoreFinalScore);
+}
+
+function renderScoreSubmit() {
+    // scores = document.querySelector(".scoreList")
+    // let p = document.createElement('FORM');
+    // p.setAttribute("class", "new-highscore-form");
+    // scores.appendChild(p)
+
+    // let scoresInput = document.createElement('INPUT');
+    // scoresInput.setAttribute("type", "text");
+    // scoresInput.setAttribute("id", "scoreArea");
+    // scoresInput.setAttribute("value", scoreFinalScore);
+    // scores.appendChild(scoresInput);
+    // // document.getElementById('scoreArea').setAttribute('readonly', true);
+
+    // let scoresSubmit = document.createElement('INPUT');
+    // scoresSubmit.setAttribute('type', 'submit');
+    // scores.appendChild(scoresSubmit);
+
+    HiScore.createHiScore();
 }

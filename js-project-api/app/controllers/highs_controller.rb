@@ -17,7 +17,7 @@ class HighsController < ApplicationController
     private
 
     def score_params
-        params.require(:high).permit(:score, :difficulty_id)
+        params.require(:high).permit(:score, :user_id)
     end
 
 end

@@ -1,7 +1,3 @@
-document.addEventListener("DOMContentLoaded", function() {
-    startGame()
-
-})
 
 let selectedDifficulty;
 
@@ -23,6 +19,7 @@ function selectDiff() {
 function diffClicked(event) {
         event = event.target.innerHTML;
         selectedDifficulty = event;
+        document.querySelector('.new-user-form').remove();
         document.querySelector('.instructions').remove();
         document.querySelectorAll('.difficulty').forEach(function(a){
             a.remove()

@@ -114,6 +114,7 @@ function rightAnswer() {
         let docNumbers = document.getElementById("dump");
         docNumbers.insertAdjacentHTML('beforeend', '<h1 style="color: white" class="correctLetters";>' + "You win!" + "</h1>");
         docNumbers.insertAdjacentHTML('beforeend', '<h1 style="color: white" class="correctLetters";>' + "Your Score: " +  scoreFinalScore + "</h1>");
+        // renderScoreSubmit();
 }
 
 function winOrLose(x) {

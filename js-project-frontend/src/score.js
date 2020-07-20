@@ -10,23 +10,23 @@ class HiScore {
     constructor(data) {
         this.id = data.id;
         this.score = data.score;
-        this.difficulty = data.difficulty;
+        this.user = data.user_id
     }
 
     static createHiScore() {
         let scoreForm = document.querySelector(".new-highscore-form")
         console.log(scoreForm);
-        scoreForm.addEventListener("submit", function(event) {
+        scoreForm.addEventListener('submit', function(event) {
             event.preventDefault();
-            console.log("clicked");
-
+            console.log("hiscore clicked");
         fetch("http://localhost:3000/highs",{
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
             },
             body:  JSON.stringify({
-                score: event.target[0].value
+                score: event.target[0].value,
+                user_id: userCode
             })
         })
         .then(response => response.json())
@@ -37,6 +37,8 @@ class HiScore {
         })
     })
     }
+
+    static appendScoreToDom
 }
 
 
@@ -65,12 +67,12 @@ function renderScoreSubmit() {
     scoresInput.setAttribute("type", "text");
     scoresInput.setAttribute("id", "scoreArea");
     scoresInput.setAttribute("value", scoreFinalScore);
-    scores.appendChild(scoresInput);
+    p.appendChild(scoresInput);
     // document.getElementById('scoreArea').setAttribute('readonly', true);
 
     let scoresSubmit = document.createElement('INPUT');
     scoresSubmit.setAttribute('type', 'submit');
-    scores.appendChild(scoresSubmit);
+    p.appendChild(scoresSubmit);
 
     HiScore.createHiScore();
 }

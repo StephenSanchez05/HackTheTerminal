@@ -1,8 +1,11 @@
 document.addEventListener("DOMContentLoaded", function() {
     User.createUser()
     User.getDDChange()
+ 
 
 })
+
+let userCode;
 
 class User {
     constructor(data) {
@@ -43,8 +46,6 @@ class User {
             .then(response => response.json())
             .then(data => {
                 data.map(u => {
-                let newUser = new User(u)
-                // newUser.addUserToDom();
                 uu.innerHTML = uu.innerHTML + `<option value ="${u.id}">${u.name}</option>`
                 })                
             })
@@ -65,10 +66,7 @@ class User {
         let select = document.querySelector(".user-select")
         select.addEventListener("change", function(e) {
             console.log("e", e.target.value);
-            fetch(`http://localhost:3000/users/${e.target.value}`)
-            .then(response => response.json())
-            .then(data =>)
-            
+            userCode = e.target.value;    
 
         })
     }

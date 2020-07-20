@@ -5,7 +5,7 @@ class HighsController < ApplicationController
         if score.valid?
             render json:score
         else
-            render json: {error: "High Score was not submitted"}
+            render json: {:errors => score.errors.full_messages}
         end
     end
 

@@ -108,13 +108,15 @@ function wrongAnswer(x) {
 
 function rightAnswer() {
     finalScore();
+    let uu = document.querySelector(".user-select")
+    uu.style.visibility = "visible";
     document.querySelectorAll('.correctLetters').forEach(function(a){
         a.remove()
         })
         let docNumbers = document.getElementById("dump");
         docNumbers.insertAdjacentHTML('beforeend', '<h1 style="color: white" class="correctLetters";>' + "You win!" + "</h1>");
         docNumbers.insertAdjacentHTML('beforeend', '<h1 style="color: white" class="correctLetters";>' + "Your Score: " +  scoreFinalScore + "</h1>");
-        // renderScoreSubmit();
+        renderScoreSubmit();
 }
 
 function winOrLose(x) {

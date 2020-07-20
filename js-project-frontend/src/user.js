@@ -1,16 +1,15 @@
 document.addEventListener("DOMContentLoaded", function() {
     User.createUser()
+    User.getDDChange()
 
 })
-
-const all = [];
 
 class User {
     constructor(data) {
         this.id = data.id;
         this.name = data.name;
-        this.highs = [];
-        all.push(this)
+        this.highs = data.highs;
+        
     }
 
     static createUser() {
@@ -45,7 +44,7 @@ class User {
             .then(data => {
                 data.map(u => {
                 let newUser = new User(u)
-                newUser.addUserToDom();
+                // newUser.addUserToDom();
                 uu.innerHTML = uu.innerHTML + `<option value ="${u.id}">${u.name}</option>`
                 })                
             })
@@ -61,5 +60,16 @@ class User {
     }
 
     
-//ignore this
+    static getDDChange() {
+        let scoreForm = document.querySelector(".new-user-form")
+        let select = document.querySelector(".user-select")
+        select.addEventListener("change", function(e) {
+            console.log("e", e.target.value);
+            fetch(`http://localhost:3000/users/${e.target.value}`)
+            .then(response => response.json())
+            .then(data =>)
+            
+
+        })
+    }
 }

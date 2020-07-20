@@ -56,21 +56,21 @@ function finalScore() {
 }
 
 function renderScoreSubmit() {
-    // scores = document.querySelector(".scoreList")
-    // let p = document.createElement('FORM');
-    // p.setAttribute("class", "new-highscore-form");
-    // scores.appendChild(p)
+    scores = document.querySelector(".scoreList")
+    let p = document.createElement('FORM');
+    p.setAttribute("class", "new-highscore-form");
+    scores.appendChild(p)
 
-    // let scoresInput = document.createElement('INPUT');
-    // scoresInput.setAttribute("type", "text");
-    // scoresInput.setAttribute("id", "scoreArea");
-    // scoresInput.setAttribute("value", scoreFinalScore);
-    // scores.appendChild(scoresInput);
-    // // document.getElementById('scoreArea').setAttribute('readonly', true);
+    let scoresInput = document.createElement('INPUT');
+    scoresInput.setAttribute("type", "text");
+    scoresInput.setAttribute("id", "scoreArea");
+    scoresInput.setAttribute("value", scoreFinalScore);
+    scores.appendChild(scoresInput);
+    // document.getElementById('scoreArea').setAttribute('readonly', true);
 
-    // let scoresSubmit = document.createElement('INPUT');
-    // scoresSubmit.setAttribute('type', 'submit');
-    // scores.appendChild(scoresSubmit);
+    let scoresSubmit = document.createElement('INPUT');
+    scoresSubmit.setAttribute('type', 'submit');
+    scores.appendChild(scoresSubmit);
 
     HiScore.createHiScore();
 }

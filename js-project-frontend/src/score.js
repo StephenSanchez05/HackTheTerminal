@@ -37,11 +37,25 @@ class HiScore {
         })
     })
     }
+}
 
-    static appendScoreToDom
+function addScoreToDom(x) {
+    let data = document.getElementById("scoreList");
+    data.insertAdjacentHTML('beforeend', '<div style="color: white"; id="screen"; class="words";>' + x + "</div>");
+    setQuerySelector();
 }
 
 
+function listHighScores() {  
+    fetch("http://localhost:3000/highs")
+        .then(response => response.json())
+        .then(data => {
+            data.map(u => {
+            console.log(u.user);
+            addScoreToDom(u.score);
+            })                
+        })
+}
 
 
 

@@ -34,6 +34,7 @@ class User {
             let newUser = new User(resp); 
             startGame();           
             newUser.getAllUsers()
+            listHighScores();
         })
     })
     }
@@ -51,16 +52,7 @@ class User {
             })
     }
 
-    addUserToDom () {
-        let users = document.querySelector(".userList")
-        let node = document.createElement("LI");
-        node.innerText = this.name;
-        users.appendChild(node);
-        console.log(node);
-
-    }
-
-    
+   
     static getDDChange() {
         let scoreForm = document.querySelector(".new-user-form")
         let select = document.querySelector(".user-select")
@@ -71,3 +63,28 @@ class User {
         })
     }
 }
+
+function addUserToDom (info) {
+    node.innerText = info.name;
+    users.appendChild(node);
+    console.log(info.highs);
+    info.highs.forEach( x => {
+        node.innertext = x;
+        users.appendChild(node);
+    })
+    console.log(node);
+}
+
+// function listHighScores() {
+//     let users = document.querySelector(".scoreList")
+//     let node = document.createElement("LI");
+//     fetch("http://localhost:3000/users")
+//         .then(response => response.json())
+//         .then(data => {
+//             data.map(u => {
+//             console.log(u.highs);
+//             node.innerHTML = u.name;
+//             users.appendChild(node);
+//             })                
+//         })
+// }

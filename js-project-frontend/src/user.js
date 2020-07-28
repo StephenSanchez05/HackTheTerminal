@@ -34,7 +34,6 @@ class User {
             let newUser = new User(resp); 
             startGame();           
             newUser.getAllUsers()
-            listHighScores();
         })
     })
     }
@@ -46,15 +45,14 @@ class User {
         fetch("http://localhost:3000/users")
             .then(response => response.json())
             .then(data => {
-                data.map(u => {
-                uu.innerHTML = uu.innerHTML + `<option value ="${u.id}">${u.name}</option>`
+                data.data.map(u => {
+                uu.innerHTML = uu.innerHTML + `<option value ="${u.id}">${u.attributes.name}</option>`
                 })                
             })
     }
 
    
     static getDDChange() {
-        let scoreForm = document.querySelector(".new-user-form")
         let select = document.querySelector(".user-select")
         select.addEventListener("change", function(e) {
             console.log("e", e.target.value);

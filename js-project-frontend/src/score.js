@@ -46,16 +46,16 @@ function addScoreToDom(x) {
 }
 
 
-function listHighScores() {  
-    fetch("http://localhost:3000/highs")
-        .then(response => response.json())
-        .then(data => {
-            data.map(u => {
-            console.log(u.user);
-            addScoreToDom(u.score);
-            })                
-        })
-}
+// function listHighScores() {  
+//     fetch("http://localhost:3000/highs")
+//         .then(response => response.json())
+//         .then(data => {
+//             data.map(u => {
+//             console.log(u);
+//             addScoreToDom(u.score);
+//             })                
+//         })
+// }
 
 
 
@@ -72,7 +72,7 @@ function finalScore() {
 }
 
 function renderScoreSubmit() {
-    scores = document.querySelector(".scoreList")
+    scores = document.querySelector("#scoreList")
     let p = document.createElement('FORM');
     p.setAttribute("class", "new-highscore-form");
     scores.appendChild(p)

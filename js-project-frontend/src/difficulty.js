@@ -15,7 +15,6 @@ class Difficulty {
         this.id = data.id;
         this.name = data.name;
         this.words = data.words;
-        this.highs = [];
     }
 
     static loadDifficulty() {
